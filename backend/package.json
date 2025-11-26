@@ -1,7 +1,7 @@
 {
-  "name": "101501883_comp3123_assignment1",
+  "name": "101501883_comp3123_assignment2",
   "version": "1.0.0",
-  "description": "COMP3123 Assignment 1 - Backend API (Express + MongoDB)",
+  "description": "COMP3123 Assignment 2",
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
@@ -16,6 +16,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.19.0",
     "morgan": "^1.10.1",
+    "multer": "^2.0.2",
     "serverless-http": "^3.2.0"
   },
   "devDependencies": {

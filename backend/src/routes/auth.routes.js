@@ -5,7 +5,7 @@ const { signup, login } = require("../controllers/auth.controller");
 const router = express.Router();
 
 /**
- * @route   POST /api/v1/user/signup
+ * POST /api/v1/user/signup
  */
 router.post(
   "/signup",
@@ -14,15 +14,19 @@ router.post(
       .isString()
       .trim()
       .isLength({ min: 3, max: 50 })
-      .withMessage("Username must be between 3-50 characters"),
+      .withMessage("Username must be between 3 and 50 characters"),
     body("email").isEmail().withMessage("Valid email is required"),
-    body("password").isString().isLength({ min: 6 }).withMessage("Password must be at least 6 characters"),
+    body("password")
+      .isString()
+      .isLength({ min: 6 })
+      .withMessage("Password must be at least 6 characters long")
   ],
   signup
 );
 
 /**
- * @route   POST /api/v1/user/login
+ * POST /api/v1/user/login
+ * body: { email OR username OR identifier, password }
  */
 router.post(
   "/login",
@@ -33,7 +37,7 @@ router.post(
         throw new Error("Provide 'email' or 'username'.");
       }
       return true;
-    }),
+    })
   ],
   login
 );

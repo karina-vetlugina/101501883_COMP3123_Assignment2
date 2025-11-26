@@ -9,7 +9,7 @@ const UserSchema = new mongoose.Schema(
       trim: true,
       minlength: 3,
       maxlength: 50,
-      unique: true,
+      unique: true
     },
     email: {
       type: String,
@@ -17,23 +17,21 @@ const UserSchema = new mongoose.Schema(
       trim: true,
       lowercase: true,
       unique: true,
-      match: [/^\S+@\S+\.\S+$/, "Invalid email format"],
+      match: [/^\S+@\S+\.\S+$/, "Invalid email format"]
     },
-    // hide password by default when querying
     password: {
       type: String,
       required: true,
       minlength: 6,
-      select: false,
-    },
+      select: false
+    }
   },
   {
     timestamps: { createdAt: "created_at", updatedAt: "updated_at" },
-    collection: "users",
+    collection: "users"
   }
 );
 
-// hash password before saving
 UserSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
   const salt = await bcrypt.genSalt(10);
@@ -41,7 +39,6 @@ UserSchema.pre("save", async function (next) {
   next();
 });
 
-// instance method to compare plaintext vs hashed password
 UserSchema.methods.comparePassword = function (candidate) {
   return bcrypt.compare(candidate, this.password);
 };

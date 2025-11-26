@@ -1,4 +1,4 @@
-# COMP3123 Assignment 1 - Backend API
+# COMP3123 Assignment 2
 
 **Name:** Karina Vetlugina  
 **Student ID:** 101501883
