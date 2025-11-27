@@ -118,7 +118,7 @@ exports.updateEmployee = async (req, res) => {
 
     const data = { ...req.body };
 
-    // if profile_image is undefined → keep old image
+    // if profile_image is undefined -> keep old image
     const emp = await Employee.findByIdAndUpdate(req.params.eid, data, {
       new: true,
       runValidators: true
