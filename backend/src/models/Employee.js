@@ -56,6 +56,4 @@ const EmployeeSchema = new mongoose.Schema(
   }
 );
 
-EmployeeSchema.index({ email: 1 }, { unique: true });
-
 module.exports = mongoose.model("Employee", EmployeeSchema);
